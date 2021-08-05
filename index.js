@@ -3,8 +3,17 @@ const checkButton = document.querySelector("#check-button");
 const cashGiven = document.querySelector("#cash-given");
 const message = document.querySelector("#error-message");
 const noOfNotes = document.querySelectorAll(".no-of-notes");
+const nextButton = document.querySelector("#next-button");
+const table = document.querySelector(".change-table");
+const label = document.querySelector("#label");
 
-// console.log(noOfNotes);
+// console.log(nextButton);
+
+// cashInput.style.display = "none";
+table.style.display = "none";
+checkButton.style.display = "none";
+label.style.display = "none";
+cashGiven.style.display = "none";
 
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 // console.log(billAmount);
@@ -13,24 +22,28 @@ const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 
 // console.log(cashGiven);
 
+const validateCash = () => {
+  hideMessage();
+  if (!isNaN(cashGiven.value) && cashGiven.value > 0) {
+    if (cashGiven.value >= billAmount.value) {
+      console.log(cashGiven.value >= billAmount.value);
+      const amountToBeReturned = cashGiven.value - billAmount.value;
+      calcuateChange(amountToBeReturned);
+    } else {
+      showMessage(
+        "The cash provided is less than the bill Amount, Do you wanna do the dishes?"
+      );
+    }
+  } else showMessage("Please provide cash");
+};
+
 const validateBillAmount = () => {
   hideMessage();
-  if (!isNaN(billAmount.value)) {
-    if (billAmount.value > 0) {
-      if (cashGiven.value >= billAmount.value) {
-        console.log(cashGiven.value);
-        console.log(billAmount.value);
-        const amountToBeReturned = cashGiven.value - billAmount.value;
-        calcuateChange(amountToBeReturned);
-      } else {
-        showMessage(
-          "The cash provided is less than the bill Amount, Do you wanna do the dishes?"
-        );
-      }
-    } else {
-      showMessage("Invalid Bill Amount");
-    }
-  }
+  if (!isNaN(billAmount.value) && billAmount.value > 0) {
+    checkButton.style.display = "block";
+    label.style.display = "block";
+    cashGiven.style.display = "block";
+  } else showMessage("Enter a number greater than 0");
 };
 
 const showMessage = (errorMessage) => {
@@ -45,9 +58,13 @@ const calcuateChange = (amountToBeReturned) => {
 
     noOfNotes[i].innerText = numberOfNotes;
   }
+  table.style.display = "block";
 };
 
 const hideMessage = () => {
   message.style.display = "none";
 };
-checkButton.addEventListener("click", validateBillAmount);
+
+nextButton.addEventListener("click", validateBillAmount);
+
+checkButton.addEventListener("click", validateCash);

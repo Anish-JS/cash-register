@@ -10,7 +10,7 @@
   margin: auto;
   align-items: center;
   color: white;
-  padding: 3rem;
+  padding: 2rem;
   background-color: #047857;
 }
 
@@ -40,6 +40,16 @@ input {
   color: rgb(20, 20, 20);
 }
 
+#next-button {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #6ee7b7;
+  border: none;
+  opacity: 0.8;
+  color: rgb(20, 20, 20);
+}
 .change-table {
   margin: 1rem;
   padding: 1rem;
@@ -47,6 +57,7 @@ input {
 
 caption {
   font-size: 2rem;
+  padding-bottom: 1rem;
 }
 
 th {
@@ -70,4 +81,8 @@ td {
 .no-of-notes {
   background-color: white;
   color: black;
+}
+
+p {
+  font-size: 1.2rem;
 }
