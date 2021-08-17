@@ -9,25 +9,22 @@ const label = document.querySelector("#label");
 
 // console.log(nextButton);
 
-// cashInput.style.display = "none";
 table.style.display = "none";
 checkButton.style.display = "none";
 label.style.display = "none";
 cashGiven.style.display = "none";
 
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
-// console.log(billAmount);
-
-// console.log(checkButton);
-
-// console.log(cashGiven);
 
 const validateCash = () => {
+  givenCash = Number(cashGiven.value);
+  totalBill = Number(billAmount.value);
+  // console.log(typeof cashGiven.value);
   hideMessage();
-  if (!isNaN(cashGiven.value) && cashGiven.value > 0) {
-    if (cashGiven.value >= billAmount.value) {
-      console.log(cashGiven.value >= billAmount.value);
-      const amountToBeReturned = cashGiven.value - billAmount.value;
+  if (!isNaN(givenCash) && givenCash > 0) {
+    if (givenCash >= totalBill) {
+      console.log(givenCash >= totalBill);
+      const amountToBeReturned = givenCash - totalBill;
       calcuateChange(amountToBeReturned);
     } else {
       showMessage(
