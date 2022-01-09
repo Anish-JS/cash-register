@@ -17,8 +17,8 @@ cashGiven.style.display = "none";
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 
 const validateCash = () => {
-  givenCash = Number(cashGiven.value);
-  totalBill = Number(billAmount.value);
+  let givenCash = Number(cashGiven.value);
+  let totalBill = Number(billAmount.value);
   // console.log(typeof cashGiven.value);
   hideMessage();
   if (!isNaN(givenCash) && givenCash > 0) {
@@ -28,10 +28,10 @@ const validateCash = () => {
       calcuateChange(amountToBeReturned);
     } else {
       showMessage(
-        "The cash provided is less than the bill Amount, Do you wanna do the dishes?"
+        `The cash provided is less than the bill Amount, Do you wanna do the dishes?`
       );
     }
-  } else showMessage("Please provide cash");
+  } else showMessage(`Please provide cash`);
 };
 
 const validateBillAmount = () => {
@@ -40,7 +40,7 @@ const validateBillAmount = () => {
     checkButton.style.display = "block";
     label.style.display = "block";
     cashGiven.style.display = "block";
-  } else showMessage("Enter a number greater than 0");
+  } else showMessage(` a number greater than 0`);
 };
 
 const showMessage = (errorMessage) => {
